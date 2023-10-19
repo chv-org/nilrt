@@ -1,5 +1,5 @@
 trigger:
-- nilrt/master/*
+- dev/cvadrevu/prbuild
 
 jobs:
 - job: Build_OpenEmbedded
