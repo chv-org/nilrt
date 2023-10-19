@@ -1,20 +1,12 @@
 trigger:
 - nilrt/master/*
 
-resources:
-  containers:
-  - container: rtos-build
-    image: niartifacts.jfrog.io/rnd-docker-ci/ni/rtos/build-nilrt:kirkstone
-    options:
-
 jobs:
 - job: Build_OpenEmbedded
-  container: rtos-build
   timeoutInMinutes: 3600
   pool:
     name: Drivers-NIBuildFarm-RFMIBUILD
     demands:
-      - docker
       - Agent.OS -equals Linux
   steps:
   - checkout: self
