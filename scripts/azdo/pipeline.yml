@@ -1,0 +1,29 @@
+trigger:
+- nilrt/master/*
+
+resources:
+  containers:
+  - container: rtos-build
+    image: niartifacts.jfrog.io/rnd-docker-ci/ni/rtos/build-nilrt:kirkstone
+    options:
+
+jobs:
+- job: Build_OpenEmbedded
+  container: rtos-build
+  timeoutInMinutes: 3600
+  pool:
+    name: Drivers-NIBuildFarm-RFMIBUILD
+    demands:
+      - docker
+      - Agent.OS -equals Linux
+  steps:
+  - checkout: self
+    submodules: true
+  - script: |
+      echo "Hello World!"
+      #export MACHINE=x64
+      #source ni-oe-init-build-env
+      #bitbake packagegroup-ni-coreimagerepo
+      #bitbake --continue packagegroup-ni-extra
+      #bitbake package-index
+      #bitbake restore-mode-image
