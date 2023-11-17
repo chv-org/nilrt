@@ -8,7 +8,7 @@ jobs:
   steps:
   - script: |
       echo "Hello World!"
-      echo "prbuild 2.1"
+      echo "prbuild release_branch_test 1.0"
       #export MACHINE=x64
       #source ni-oe-init-build-env
       #bitbake packagegroup-ni-coreimagerepo
