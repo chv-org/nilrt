@@ -1,6 +1,3 @@
-trigger:
-- dev/cvadrevu/prbuild
-
 jobs:
 - job: Build_OpenEmbedded
   timeoutInMinutes: 3600
@@ -9,8 +6,6 @@ jobs:
     demands:
       - Agent.OS -equals Linux
   steps:
-  - checkout: self
-    submodules: true
   - script: |
       echo "Hello World!"
       echo "prbuild 2.1"
