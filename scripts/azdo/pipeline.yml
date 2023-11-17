@@ -8,10 +8,13 @@ jobs:
   steps:
   - script: |
       echo "Hello World!"
-      echo "prbuild release_branch_test 3.0"
-      #export MACHINE=x64
-      #source ni-oe-init-build-env
-      #bitbake packagegroup-ni-coreimagerepo
-      #bitbake --continue packagegroup-ni-extra
-      #bitbake package-index
-      #bitbake restore-mode-image
+      echo "prbuild release_branch_test 3.1"
+  - script: |
+      echo "python test"
+      set -ex
+      rm -rf .venv
+      python3 -m venv .venv
+      source .venv/bin/activate
+      python3 -m pip install pip -U
+      python3 -m pip install rtos_oetest origin_client -U -i https://pypi.ni.systems --prefer-binary
+      echo Starting to run BSI Tests
